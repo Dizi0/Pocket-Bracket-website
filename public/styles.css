@@ -1,0 +1,406 @@
+:root {
+    /* Reference Aesthetic: "Technical Wireframe" */
+    --bg-color: #050505;
+    --surface-color: rgba(255, 255, 255, 0.02);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --text-primary: #ededed;
+    --text-secondary: #888888;
+    --accent-color: #ffffff;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 64px;
+
+    /* Typography */
+    --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 1. Grid Background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* 2. Monitor/Terminal Vignette Glow */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0, 5, 20, 0.8) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 0.9;
+    margin-bottom: var(--spacing-md);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-xs);
+    display: inline-block;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+/* Small Metadata Text (Monospace) */
+.mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+/* Buttons: Hard Shadows, Strict Borders */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.1s;
+    /* Hard Shadow */
+    box-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 0.1);
+    margin-right: 1rem;
+}
+
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px 0px var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    box-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: #ffffff;
+    box-shadow: 5px 5px 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+.store-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: #1a1a1a;
+    border-color: #444;
+    color: #666;
+    border-style: solid;
+    pointer-events: none;
+    /* Ensures no click interaction */
+}
+
+.store-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: #1a1a1a;
+}
+
+/* Lay.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+} */
+
+/* Phone Frame Carousel */
+.phone-frame {
+    border: 2px solid var(--text-primary);
+    border-radius: 30px;
+    padding: 10px;
+    background: transparent;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 10px 10px 0px 0px rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+/* Wireframe "Notch" or Camera indicator */
+.phone-frame::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--text-primary);
+    margin: 0 auto 10px auto;
+    border-radius: 2px;
+}
+
+.phone-screen {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 9/19;
+    /* Approximate modern phone ratio */
+    background: #000;
+    border: 1px solid var(--border-color);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Layout Container */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.2);
+    /* Slight darkening within container */
+}
+
+/* Beta Banner */
+.beta-banner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: repeating-linear-gradient(45deg,
+            #1a1a1a,
+            #1a1a1a 10px,
+            #000 10px,
+            #000 20px);
+    border-bottom: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 8px 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* Nav */
+nav {
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+.lang-switch {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.lang-switch:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Sections */
+section {
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* Hero */
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    /* Glitch effect or filter maybe? Keeping it simple for now */
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Gap is handled by margin on cards to allow creating 'border lines' between them? 
+       Actually, grid gap + clear borders is cleaner */
+    gap: 1px;
+    background: var(--border-color);
+    /* Lines between items */
+    border: 1px solid var(--border-color);
+}
+
+.feature-card {
+    background: var(--bg-color);
+    padding: 2rem;
+    transition: background 0.2s;
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Roadmap */
+.roadmap-list {
+    border-left: 1px solid var(--border-color);
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+.roadmap-item {
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+.roadmap-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--spacing-md) - 5px);
+    /* Align with border center (-1px/2 - wait, line is 1px) */
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    background: var(--bg-color);
+    border: 1px solid var(--text-secondary);
+}
+
+.roadmap-item[data-status="done"]::before {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.roadmap-status {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Tech Stack */
+.tech-grid {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.tech-item {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .tech-grid {
+        flex-direction: column;
+    }
+}

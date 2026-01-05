@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Bracket - [BETA]</title>
+
+    <!-- Fonts - Using generic monospace in CSS, but importing strict alternatives just in case -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="beta-banner">
+        ⚠️ <span data-i18n="beta_warning">APP IN BETA // EN PHASE DE BETA TEST - GOOGLE PLAY PENDING</span> ⚠️
+    </div>
+
+    <div class="container">
+        <nav>
+            <div class="nav-content">
+                <div class="logo"
+                    style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; text-transform: uppercase;">
+                    <span style="border: 1px solid white; padding: 2px 5px;">PB_v1.0</span>
+                    Pocket Bracket
+                </div>
+                <div class="lang-switch" id="langToggle">FR / EN</div>
+            </div>
+        </nav>
+
+        <main>
+            <section id="hero" class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>
+                            <span data-i18n="hero_title_1">Don't get DQ'd.</span><br>
+                            <span data-i18n="hero_title_2">Get Pocket Bracket.</span>
+                        </h1>
+                        <p data-i18n="hero_subtitle">The ultimate pocket companion for start.gg competitors. Instant
+                            match calls, station locations, and opponent scouting.</p>
+
+                        <div class="store-buttons-container" style="justify-content: flex-start; margin-left: -5px;">
+                            <!-- Google Play (Disabled) -->
+                            <div class="store-btn-wrapper tooltip-container">
+                                <button class="btn store-btn disabled">
+                                    <span class="btn-icon">[GOOGLE]</span>
+                                    <span data-i18n="btn_google">Get it on Google Play</span>
+                                </button>
+                                <span class="tooltip-text" data-i18n="tooltip_pending">Pending Approval</span>
+                            </div>
+
+                            <!-- App Store (Disabled) -->
+                            <div class="store-btn-wrapper tooltip-container">
+                                <button class="btn store-btn disabled">
+                                    <span class="btn-icon">[APPLE]</span>
+                                    <span data-i18n="btn_apple">Download on the App Store</span>
+                                </button>
+                                <span class="tooltip-text" data-i18n="tooltip_pending">Pending Approval</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <img src="assets/demo1.jpg" alt="Pocket Bracket App Screen 1" class="slide active">
+                                <img src="assets/demo2.jpg" alt="Pocket Bracket App Screen 2" class="slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features">
+                <h2 data-i18n="features_title">System Modules</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">[ALERT]</div>
+                        <h3 data-i18n="feat_alerts_title">Instant Alerts</h3>
+                        <p data-i18n="feat_alerts_desc">Receive high-contrast "MATCH CALL" notifications. Never miss a
+                            call.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[LOC]</div>
+                        <h3 data-i18n="feat_station_title">Station & Stream</h3>
+                        <p data-i18n="feat_station_desc">Know exactly where to go. "Station 5" or "Stream 1" displayed
+                            clearly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[SCOUT]</div>
+                        <h3 data-i18n="feat_scout_title">Opponent Scout</h3>
+                        <p data-i18n="feat_scout_desc">See who you're playing, their rank, avatar, and character.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[TRACK]</div>
+                        <h3 data-i18n="feat_follow_title">Smart Follows</h3>
+                        <p data-i18n="feat_follow_desc">Track friends and favorite players. Get notified.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[LOGS]</div>
+                        <h3 data-i18n="feat_history_title">Deep History</h3>
+                        <p data-i18n="feat_history_desc">Access full tournament history with infinite scrolling.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[SYNC]</div>
+                        <h3 data-i18n="feat_poll_title">Live Polling</h3>
+                        <p data-i18n="feat_poll_desc">Smart background polling keeps bracket status synchronized.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tech-stack">
+                <h2 data-i18n="tech_title">Architecture</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>React Native</h3>
+                        <p data-i18n="tech_rn">Native performance on Android & iOS via Expo.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Start.gg API</h3>
+                        <p data-i18n="tech_api">Direct integration with official tournament data.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="roadmap">
+                <h2 data-i18n="roadmap_title">Roadmap & Status</h2>
+                <div class="roadmap-list">
+                    <div class="roadmap-item">
+                        <span class="roadmap-status">[OK]</span>
+                        <div>
+                            <h3 data-i18n="road_friend_title">Friendlist / Follow System</h3>
+                            <p data-i18n="road_friend_desc">Follow players and view their active/history profiles.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-status">[..]</span>
+                        <div>
+                            <h3 data-i18n="road_h2h_title">Head-to-Head (H2H)</h3>
+                            <p data-i18n="road_h2h_desc">See your historical match records against any opponent.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-status">[..]</span>
+                        <div>
+                            <h3 data-i18n="road_map_title">Venue Map</h3>
+                            <p data-i18n="road_map_desc">Interactive indoor maps to find your station instantly.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-status">[..]</span>
+                        <div>
+                            <h3 data-i18n="road_pass_title">Digital Pass</h3>
+                            <p data-i18n="road_pass_desc">QR Code for easy venue check-in.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="download" style="text-align: center; border-bottom: none;">
+                <h2 data-i18n="download_title">Initialize</h2>
+                <p data-i18n="download_desc" style="margin-bottom: 2rem;">Get Pocket Bracket on your device.</p>
+
+                <div class="store-buttons-container">
+                    <!-- Google Play (Disabled) -->
+                    <div class="store-btn-wrapper tooltip-container">
+                        <button class="btn store-btn disabled">
+                            <span class="btn-icon">[GOOGLE]</span>
+                            <span data-i18n="btn_google">Get it on Google Play</span>
+                        </button>
+                        <span class="tooltip-text" data-i18n="tooltip_pending">Pending Approval</span>
+                    </div>
+
+                    <!-- App Store (Disabled) -->
+                    <div class="store-btn-wrapper tooltip-container">
+                        <button class="btn store-btn disabled">
+                            <span class="btn-icon">[APPLE]</span>
+                            <span data-i18n="btn_apple">Download on the App Store</span>
+                        </button>
+                        <span class="tooltip-text" data-i18n="tooltip_pending">Pending Approval</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 POCKET BRACKET. <span data-i18n="footer_credit">Built for competitors.</span></p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
